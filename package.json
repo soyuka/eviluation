@@ -1,0 +1,19 @@
+{
+  "name": "eviluation",
+  "version": "1.0.0",
+  "description": "Stringify prototypes, errors, objects etc and evaluate them back to javscript code",
+  "main": "index.js",
+  "engines": {
+    "node": ">4.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": ["eval", "evaluation", "stringify", "prototype", "evil"],
+  "author": "soyuka <soyuka@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^3.3.0",
+    "mocha": "^2.3.3"
+  }
+}
