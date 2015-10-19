@@ -60,12 +60,17 @@ describe('function', function() {
     this.hello = 'world' 
   }
 
+  Test.prototype.foo = function() {
+    return 'bar'
+  }
+
   var t = new Test()
 
   var s = engine.stringify(t)
   var o = engine.parse(s)
 
   expect(o).to.have.property('hello', 'world')
+  expect(o.foo()).to.equal('bar')
  })
 
  it('should serialize an Error', function() {
