@@ -1,6 +1,6 @@
 {
   "name": "eviluation",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Stringify prototypes, errors, objects etc and evaluate them back to javascript code",
   "main": "index.js",
   "engines": {
@@ -10,7 +10,13 @@
     "test": "mocha"
   },
   "repository": "http://github.com/soyuka/eviluation",
-  "keywords": ["eval", "evaluation", "stringify", "prototype", "evil"],
+  "keywords": [
+    "eval",
+    "evaluation",
+    "stringify",
+    "prototype",
+    "evil"
+  ],
   "author": "soyuka <soyuka@gmail.com>",
   "license": "MIT",
   "devDependencies": {
