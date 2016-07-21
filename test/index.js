@@ -3,8 +3,8 @@ var expect = require('chai').expect
 
 describe('function', function() {
  it('should serialize function', function() {
-  var t = function test() { return 'hello world'; } 
-  
+  var t = function test() { return 'hello world'; }
+
   var e = engine.stringify(t)
 
   expect(e).to.equal("return function test() { return 'hello world'; }")
@@ -13,7 +13,7 @@ describe('function', function() {
 
  it('should serialize array', function() {
   var t = [0,1,2]
-  
+
   var e = engine.stringify(t)
 
   expect(e).to.equal("return [0,1,2]")
@@ -23,7 +23,7 @@ describe('function', function() {
 
  it('should serialize object', function() {
   var t = {foo: 'bar'}
-  
+
   var e = engine.stringify(t)
 
   expect(e).to.equal("return {foo:'bar'}")
@@ -33,7 +33,7 @@ describe('function', function() {
 
  it('should serialize deep object', function() {
   var t = {foo: 'bar', bar: [0, 1, 2], foobar: {some: 'thing'}}
-  
+
   var e = engine.stringify(t)
 
   expect(engine.parse(e)).to.deep.equal(t)
@@ -55,9 +55,19 @@ describe('function', function() {
    expect(o.hello('you')).to.equal('hello you!')
  })
 
+ it('should serialize fstat', function() {
+   const fs = require('fs')
+   let stat = fs.statSync('./index.js')
+   var e = engine.stringify(stat)
+   var t = engine.parse(`const constants = ${JSON.stringify(fs.constants)};`+e)
+
+   expect(t.isDirectory()).to.equal(false)
+   expect(t.atime).to.be.an.instanceof(Date)
+ })
+
  it('should serialize a prototype instance', function() {
   function Test() {
-    this.hello = 'world' 
+    this.hello = 'world'
   }
 
   Test.prototype.foo = function() {
@@ -94,12 +104,12 @@ describe('function', function() {
 
  it('should run in global context', function() {
    var t = function() {
-    return process 
+    return process
    }
 
    var s = engine.stringify(t)
    var o = engine.parse(s)
-   
+
    expect(o()).to.deep.equal(process)
  })
 })

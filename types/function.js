@@ -16,7 +16,7 @@ module.exports = function FunctionType(element) {
 
       str += this.num === 1 ? ';return '+element.name : ''
     } else {
-      str = this.appendReturn(str) 
+      str = this.appendReturn(str)
     }
 
     return str

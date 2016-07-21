@@ -12,7 +12,7 @@ module.exports = {
     return str
   },
   stringify: function stringify(e) {
-    this.num = 0 
+    this.num = 0
 
     return this._stringify(e)
   },

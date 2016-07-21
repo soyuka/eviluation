@@ -4,6 +4,7 @@ module.exports = function DateType(element) {
     return null
   }
 
-  return `return new Date(${element.getTime()})`
+  let s = `new Date(${element.getTime()})`
+  return this.num === 0 ? `return ${s}` : s
 }
 
